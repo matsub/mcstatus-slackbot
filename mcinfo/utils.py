@@ -1,11 +1,8 @@
 # coding: utf-8
 
 import re
-import configparser
+import os
 from mcstatus import MinecraftServer as mc
-
-config = configparser.ConfigParser()
-config.read('configuration.ini')
 
 IPv4Regex = re.compile(
     "("
@@ -34,7 +31,7 @@ def address_match(str):
 class McRespond:
 
     def __init__(self):
-        address = config['Server']['address']
+        address = os.environ.get("MCSTAT_ADDR")
         self.default = mc.lookup(address)
 
     def status(self, address=None):

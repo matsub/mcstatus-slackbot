@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import configparser
+import os
 from slashcommands import SlashCommands
 from mcinfo.utils import (
     address_match,
     McRespond,
 )
 
-config = configparser.ConfigParser()
-config.read('configuration.ini')
-TOKEN = config['Slack']['TOKEN']
+TOKEN = os.environ.get("MCSTAT_TOKEN")
 
 app = SlashCommands(TOKEN, prefix='/mcinfo/')
 mc = McRespond()
@@ -52,5 +50,5 @@ def server_version(body):
 
 
 if __name__ == '__main__':
-    port = int(config['Bot']['port'])
+    port = int(os.environ.get("MCSTAT_PORT", "8080"))
     app.run(debug=True, port=port)

@@ -1,2 +1,2 @@
 mcstatus==2.1
-slashcommands==0.2
+slashcommands==0.3
