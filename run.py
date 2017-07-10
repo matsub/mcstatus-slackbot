@@ -3,7 +3,7 @@
 
 import os
 from slashcommands import SlashCommands
-from mcinfo.utils import (
+from .mcinfo.utils import (
     address_match,
     McRespond,
 )
